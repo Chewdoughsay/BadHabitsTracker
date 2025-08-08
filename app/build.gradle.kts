@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.devtools.ksp") version "1.9.20-1.0.14"
+    id("com.google.devtools.ksp") version "2.0.21-1.0.25"
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
 }
