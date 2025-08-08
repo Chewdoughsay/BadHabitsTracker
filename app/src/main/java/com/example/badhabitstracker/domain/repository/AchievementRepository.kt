@@ -20,7 +20,7 @@ interface AchievementRepository {
     suspend fun isAchievementUnlocked(habitId: Long, type: AchievementType): Boolean
     suspend fun markAchievementAsViewed(achievementId: Long)
 
-    // Statistics
+    // statistics
     suspend fun getUnviewedAchievementsCount(): Int
     suspend fun getRecentAchievements(limit: Int = 5): List<Achievement>
     suspend fun getTotalAchievementsCount(): Int
