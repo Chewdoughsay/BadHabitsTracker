@@ -11,17 +11,17 @@ interface AchievementRepository {
     suspend fun deleteAchievement(achievement: Achievement)
 
     // achievement queries
-    fun getAllAchievements(): Flow<List<Achievement>>
+    fun getAllAchievements(userId: Long): Flow<List<Achievement>>
     fun getAchievementsForHabit(habitId: Long): Flow<List<Achievement>>
     suspend fun getAchievementById(id: Long): Achievement?
 
     // achievement logic
-    suspend fun checkAndUnlockAchievements(habitId: Long, currentStreak: Int, isFirstHabit: Boolean)
+    suspend fun checkAndUnlockAchievements(habitId: Long, userId: Long, currentStreak: Int, isFirstHabit: Boolean)
     suspend fun isAchievementUnlocked(habitId: Long, type: AchievementType): Boolean
     suspend fun markAchievementAsViewed(achievementId: Long)
 
     // statistics
-    suspend fun getUnviewedAchievementsCount(): Int
-    suspend fun getRecentAchievements(limit: Int = 5): List<Achievement>
-    suspend fun getTotalAchievementsCount(): Int
+    suspend fun getUnviewedAchievementsCount(userId: Long): Int
+    suspend fun getRecentAchievements(userId: Long, limit: Int = 5): List<Achievement>
+    suspend fun getTotalAchievementsCount(userId: Long): Int
 }

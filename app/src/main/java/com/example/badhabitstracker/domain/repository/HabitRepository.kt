@@ -13,10 +13,10 @@ interface HabitRepository {
     suspend fun getHabitById(id: Long): Habit?
 
     // queryuri pt Habit
-    fun getAllHabits(): Flow<List<Habit>>
-    fun getActiveHabits(): Flow<List<Habit>>
-    fun getCompletedHabits(): Flow<List<Habit>>
-    suspend fun getHabitsCount(): Int
+    fun getAllHabits(userId: Long): Flow<List<Habit>>
+    fun getActiveHabits(userId: Long): Flow<List<Habit>>
+    fun getCompletedHabits(userId: Long): Flow<List<Habit>>
+    suspend fun getHabitsCount(userId: Long): Int
 
     // operatii pt HabitEntry
     suspend fun insertHabitEntry(entry: HabitEntry): Long
@@ -24,6 +24,7 @@ interface HabitRepository {
     suspend fun deleteHabitEntry(entry: HabitEntry)
 
     // queryuri pt HabitEntry
+    fun getEntriesForUser(userId: Long): Flow<List<HabitEntry>>
     fun getEntriesForHabit(habitId: Long): Flow<List<HabitEntry>>
     suspend fun getEntryForDate(habitId: Long, date: String): HabitEntry?
     suspend fun getLastEntryForHabit(habitId: Long): HabitEntry?

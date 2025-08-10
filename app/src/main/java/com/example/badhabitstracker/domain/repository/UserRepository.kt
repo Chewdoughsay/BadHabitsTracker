@@ -16,11 +16,13 @@ interface  UserRepository {
     fun getCurrentUserFlow(): Flow<User?>
     suspend fun updateUser(user: User)
     suspend fun deleteUser(userId: Long)
+    suspend fun getUserById(userId: Long): User?
 
     // operatii pt sesiune
     suspend fun isUserLoggedIn(): Boolean
     suspend fun saveUserSession(user: User)
     suspend fun clearUserSession()
+    suspend fun getCurrentUserId(): Long?
 
     // settings
     suspend fun getUserSettings(userId: Long): UserSettings?
