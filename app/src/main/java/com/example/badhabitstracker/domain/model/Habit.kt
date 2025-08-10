@@ -7,6 +7,7 @@ import java.util.Date
 @Parcelize
 data class Habit(
     val id: Long = 0,
+    val userId: Long,
     val name: String,
     val description: String,
     val category: HabitCategory,

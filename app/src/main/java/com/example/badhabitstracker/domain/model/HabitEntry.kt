@@ -7,6 +7,7 @@ import java.util.Date
 @Parcelize
 data class HabitEntry (
     val id: Long = 0,
+    val userId: Long,
     val habitId: Long,
     val date: Date,
     val wasSuccessful: Boolean,

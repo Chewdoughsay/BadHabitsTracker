@@ -9,6 +9,7 @@ import java.util.Date
 data class Achievement(
     val id: Long = 0,
     val habitId: Long,
+    val userId: Long,
     val type: AchievementType,
     val unlockedAt: Date,
     val title: String,
@@ -40,10 +41,12 @@ data class Achievement(
          */
         fun createMilestone(
             habitId: Long,
+            userId: Long,
             type: AchievementType,
             customTitle: String? = null): Achievement {
             return Achievement(
                 habitId = habitId,
+                userId = userId,
                 type = type,
                 unlockedAt = Date(),
                 title = customTitle ?: type.displayName,
