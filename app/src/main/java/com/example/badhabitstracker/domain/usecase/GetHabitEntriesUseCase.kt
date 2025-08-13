@@ -14,7 +14,6 @@ class GetHabitEntriesUseCase(
 ) : BaseUseCaseWithCurrentUser<Long, Flow<List<HabitEntry>>>(userRepository) {
 
     override suspend fun execute(parameters: Long, userId: Long): Flow<List<HabitEntry>> {
-        // Security check: verify habit belongs to user
         val habit = habitRepository.getHabitById(parameters)
         require(habit?.userId == userId) { "Habit does not belong to current user" }
 
