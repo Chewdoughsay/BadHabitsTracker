@@ -65,40 +65,39 @@ data class HabitEntity(
 
     @ColumnInfo(name = "updated_at")
     val updatedAt: Date = Date()
-) {
-    fun HabitEntity.toDomain(): Habit {
-        return Habit(
-            id = this.id,
-            userId = this.userId,
-            name = this.name,
-            description = this.description,
-            category = this.category,
-            startDate = this.startDate,
-            targetDays = this.targetDays,
-            currentStreak = this.currentStreak,
-            longestStreak = this.longestStreak,
-            isActive = this.isActive,
-            dailyCost = this.dailyCost,
-            createdAt = this.createdAt,
-            updatedAt = this.updatedAt
-        )
-    }
+)
+fun HabitEntity.toDomain(): Habit {
+    return Habit(
+        id = this.id,
+        userId = this.userId,
+        name = this.name,
+        description = this.description,
+        category = this.category,
+        startDate = this.startDate,
+        targetDays = this.targetDays,
+        currentStreak = this.currentStreak,
+        longestStreak = this.longestStreak,
+        isActive = this.isActive,
+        dailyCost = this.dailyCost,
+        createdAt = this.createdAt,
+        updatedAt = this.updatedAt
+    )
+}
 
-    fun Habit.toEntity(): HabitEntity {
-        return HabitEntity(
-            id = this.id,
-            userId = this.userId,
-            name = this.name,
-            description = this.description,
-            category = this.category,
-            startDate = this.startDate,
-            targetDays = this.targetDays,
-            currentStreak = this.currentStreak,
-            longestStreak = this.longestStreak,
-            isActive = this.isActive,
-            dailyCost = this.dailyCost,
-            createdAt = this.createdAt,
-            updatedAt = this.updatedAt
-        )
-    }
+fun Habit.toEntity(): HabitEntity {
+    return HabitEntity(
+        id = this.id,
+        userId = this.userId,
+        name = this.name,
+        description = this.description,
+        category = this.category,
+        startDate = this.startDate,
+        targetDays = this.targetDays,
+        currentStreak = this.currentStreak,
+        longestStreak = this.longestStreak,
+        isActive = this.isActive,
+        dailyCost = this.dailyCost,
+        createdAt = this.createdAt,
+        updatedAt = this.updatedAt
+    )
 }

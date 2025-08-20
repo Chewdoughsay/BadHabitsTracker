@@ -46,35 +46,34 @@ data class UserEntity(
 
     @ColumnInfo(name = "updated_at")
     val updatedAt: Date = Date()
-) {
-    fun UserEntity.toDomain(): User {
-        return User(
-            id = this.id,
-            email = this.email,
-            name = this.name,
-            joinDate = this.joinDate,
-            totalHabits = this.totalHabits,
-            settings = this.settings,
-            profileImageUrl = this.profileImageUrl,
-            isVerified = this.isVerified,
-            lastLoginDate = this.lastLoginDate
-        )
-    }
+)
+fun UserEntity.toDomain(): User {
+    return User(
+        id = this.id,
+        email = this.email,
+        name = this.name,
+        joinDate = this.joinDate,
+        totalHabits = this.totalHabits,
+        settings = this.settings,
+        profileImageUrl = this.profileImageUrl,
+        isVerified = this.isVerified,
+        lastLoginDate = this.lastLoginDate
+    )
+}
 
-    fun User.toEntity(passwordHash: String): UserEntity {
-        return UserEntity(
-            id = this.id,
-            email = this.email,
-            name = this.name,
-            passwordHash = passwordHash,
-            joinDate = this.joinDate,
-            totalHabits = this.totalHabits,
-            settings = this.settings,
-            profileImageUrl = this.profileImageUrl,
-            isVerified = this.isVerified,
-            lastLoginDate = this.lastLoginDate,
-            createdAt = Date(),
-            updatedAt = Date()
-        )
-    }
+fun User.toEntity(passwordHash: String): UserEntity {
+    return UserEntity(
+        id = this.id,
+        email = this.email,
+        name = this.name,
+        passwordHash = passwordHash,
+        joinDate = this.joinDate,
+        totalHabits = this.totalHabits,
+        settings = this.settings,
+        profileImageUrl = this.profileImageUrl,
+        isVerified = this.isVerified,
+        lastLoginDate = this.lastLoginDate,
+        createdAt = Date(),
+        updatedAt = Date()
+    )
 }

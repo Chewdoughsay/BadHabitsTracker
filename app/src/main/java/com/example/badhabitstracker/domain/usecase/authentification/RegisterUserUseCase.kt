@@ -1,8 +1,9 @@
-package com.example.badhabitstracker.domain.usecase
+package com.example.badhabitstracker.domain.usecase.authentification
 
 import com.example.badhabitstracker.domain.model.User
 import com.example.badhabitstracker.domain.repository.UserRepository
 import com.example.badhabitstracker.domain.repository.SharedPreferencesRepository
+import com.example.badhabitstracker.domain.usecase.BaseUseCase
 
 data class RegisterParams(
     val email: String,
@@ -12,8 +13,7 @@ data class RegisterParams(
 )
 
 class RegisterUserUseCase(
-    private val userRepository: UserRepository,
-    private val sharedPreferencesRepository: SharedPreferencesRepository
+    private val userRepository: UserRepository
 ) : BaseUseCase<RegisterParams, User>() {
 
     companion object {
@@ -22,8 +22,7 @@ class RegisterUserUseCase(
     }
 
     override suspend fun execute(parameters: RegisterParams): User {
-
-        // validare
+        // Input validation (Use Case responsibility)
         require(parameters.email.isNotBlank()) { "Email cannot be empty" }
         require(parameters.email.matches(EMAIL_REGEX)) { "Invalid email format" }
         require(parameters.password.isNotBlank()) { "Password cannot be empty" }
@@ -35,20 +34,18 @@ class RegisterUserUseCase(
         }
         require(parameters.name.isNotBlank()) { "Name cannot be empty" }
 
-        // register user
+        // Register user (Repository handles data validation like "email already exists")
         val result = userRepository.registerUser(
             email = parameters.email.trim().lowercase(),
             password = parameters.password,
             name = parameters.name.trim()
         )
 
-        // return user or throw exception, "also" permite sa facem actiuni secundare pe obiectul obtinut
         return result.getOrElse { exception ->
             throw exception
         }.also { user ->
-            // save user session and ID
+            // UserRepository owns ALL session logic internally
             userRepository.saveUserSession(user)
-            sharedPreferencesRepository.saveUserId(user.id)
         }
     }
 }

@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface SharedPreferencesRepository {
 
-    // user session, pt logare automata daca utilizatorul a ramas logat
+    // Internal session storage (used by UserRepository only)
     suspend fun saveUserId(userId: Long)
     suspend fun getUserId(): Long?
     suspend fun clearUserId()
@@ -16,13 +16,13 @@ interface SharedPreferencesRepository {
     suspend fun getUserSettings(userId: Long): UserSettings
     fun getUserSettingsFlow(userId: Long): Flow<UserSettings>
 
-    // onboarding & first launch (vedem daca ajung sa fac si asta)
+    // onboarding & first launch
     suspend fun setFirstLaunch(isFirst: Boolean)
     suspend fun isFirstLaunch(): Boolean
     suspend fun setOnboardingCompleted(completed: Boolean)
     suspend fun isOnboardingCompleted(): Boolean
 
-    // setari/preferinte pt apl
+    // individual settings (convenience methods)
     suspend fun setNotificationsEnabled(userId: Long, enabled: Boolean)
     suspend fun areNotificationsEnabled(userId: Long): Boolean
 
@@ -32,21 +32,21 @@ interface SharedPreferencesRepository {
     suspend fun setDailyReminderTime(userId: Long, time: String)
     suspend fun getDailyReminderTime(userId: Long): String
 
-    // timestampuri pt afisare in offline (probabil nu voi implementa asta)
+    // cache for offline content
     suspend fun setLastQuoteSync(userId: Long, timestamp: Long)
     suspend fun getLastQuoteSync(userId: Long): Long
 
     suspend fun setLastHealthTipSync(userId: Long, timestamp: Long)
     suspend fun getLastHealthTipSync(userId: Long): Long
 
-    // cache pt statistici
+    // cache for statistics
     suspend fun saveTotalHabitsCount(userId: Long, count: Int)
     suspend fun getTotalHabitsCount(userId: Long): Int
 
     suspend fun saveCurrentStreak(userId: Long, habitId: Long, streak: Int)
     suspend fun getCurrentStreak(userId: Long, habitId: Long): Int
 
-    // pt logout si stergere cont
+    // cleanup operations
     suspend fun clearUserData(userId: Long)
     suspend fun clearAllData()
 }
