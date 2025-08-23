@@ -1,4 +1,4 @@
-package com.example.badhabitstracker.C_presentation.ui.auth
+package com.example.badhabitstracker.C_presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

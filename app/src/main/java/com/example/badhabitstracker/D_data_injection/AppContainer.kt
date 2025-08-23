@@ -9,7 +9,7 @@ import com.example.badhabitstracker.B_data.network.NetworkProvider
 import com.example.badhabitstracker.B_data.repository.*
 import com.example.badhabitstracker.A_domain.repository.*
 import com.example.badhabitstracker.A_domain.usecase.authentification.*
-import com.example.badhabitstracker.C_presentation.ui.auth.SplashViewModel
+import com.example.badhabitstracker.C_presentation.viewmodel.SplashViewModel
 
 /**
  * App-wide dependency container
