@@ -9,6 +9,7 @@ import com.example.badhabitstracker.B_data.network.NetworkProvider
 import com.example.badhabitstracker.B_data.repository.*
 import com.example.badhabitstracker.A_domain.repository.*
 import com.example.badhabitstracker.A_domain.usecase.authentification.*
+import com.example.badhabitstracker.C_presentation.viewmodel.LoginViewModel
 import com.example.badhabitstracker.C_presentation.viewmodel.SplashViewModel
 
 /**
@@ -71,6 +72,9 @@ class AppContainer(context: Context) {
                 // Future ViewModels go here:
                 // LoginViewModel::class.java -> LoginViewModel(loginUserUseCase) as T
                 // DashboardViewModel::class.java -> DashboardViewModel(getHabitsUseCase) as T
+                LoginViewModel::class.java -> {
+                    LoginViewModel(loginUserUseCase) as T
+                }
                 else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
         }
