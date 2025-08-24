@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Your Custom Orange Palette -->
+
+    <!-- Primary Orange Family (Based on your #d15834) -->
+    <color name="orange_primary">#d15834</color>          <!-- Your chosen orange -->
+    <color name="orange_light">#e67a5f</color>            <!-- Lighter tint for backgrounds -->
+    <color name="orange_lighter">#f2a488</color>          <!-- Even lighter for subtle accents -->
+    <color name="orange_dark">#b44628</color>             <!-- Darker shade for emphasis -->
+    <color name="orange_darker">#8b351d</color>           <!-- Darkest for text/borders -->
+
+    <!-- Complementary Colors -->
+    <color name="cream">#faf7f2</color>                   <!-- Warm neutral light -->
+    <color name="cream_dark">#f0ebe0</color>              <!-- Slightly darker cream -->
+    <color name="brown_light">#8b6f47</color>             <!-- Warm brown complement -->
+    <color name="brown_dark">#5d4a31</color>              <!-- Dark brown for text -->
+
+    <!-- Accent Colors -->
+    <color name="teal_accent">#2d8a8a</color>             <!-- Cool accent (orange's complement) -->
+    <color name="teal_light">#4fb3b3</color>              <!-- Light teal for highlights -->
+
+    <!-- Neutral Grays (Warm-toned to match orange) -->
+    <color name="gray_lightest">#f8f6f4</color>           <!-- Almost white, warm tone -->
+    <color name="gray_light">#e8e3de</color>              <!-- Light warm gray -->
+    <color name="gray_medium">#b8aea6</color>             <!-- Medium warm gray -->
+    <color name="gray_dark">#6b5f56</color>               <!-- Dark warm gray -->
+    <color name="gray_darkest">#3a332e</color>            <!-- Almost black, warm tone -->
+
+    <!-- Status Colors (Orange-tinted for consistency) -->
+    <color name="success_green">#7a9b57</color>           <!-- Warm green -->
+    <color name="warning_yellow">#d4a845</color>          <!-- Warm yellow -->
+    <color name="error_red">#c94545</color>               <!-- Warm red -->
+    <color name="info_blue">#5a7fa7</color>               <!-- Muted blue -->
+
+    <!-- Semantic Colors for Your App -->
+    <color name="background_primary">#faf7f2</color>      <!-- Main background -->
+    <color name="background_secondary">#f0ebe0</color>    <!-- Card backgrounds -->
+    <color name="text_primary">#3a332e</color>            <!-- Main text -->
+    <color name="text_secondary">#6b5f56</color>          <!-- Secondary text -->
+    <color name="accent">#d15834</color>                  <!-- Your orange for buttons, highlights -->
+
 </resources>

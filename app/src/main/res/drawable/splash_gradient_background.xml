@@ -2,13 +2,11 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <!-- Rounded corners for modern look -->
-    <corners android:radius="12dp" />
-
-    <!-- Gradient from orange to deeper red-orange -->
+    <!-- Full screen gradient background -->
     <gradient
         android:angle="135"
-        android:startColor="@color/orange_light"
+        android:startColor="@color/orange_lighter"
+        android:centerColor="@color/orange_light"
         android:endColor="@color/orange_primary"
         android:type="linear" />
 

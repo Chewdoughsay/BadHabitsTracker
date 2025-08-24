@@ -34,7 +34,8 @@ object DatabaseProvider {
             name = BadHabitsDatabase.DATABASE_NAME
         )
             // Add type converters
-            .addTypeConverter(Converters())
+            // nu le mai adaug asa ca oricum le gaseste room si imi dadea si eroare fatala deci useless line
+            //.addTypeConverter(Converters::class)
 
             // Add database callback for initial setup
             .addCallback(BadHabitsDatabase.databaseCallback)
