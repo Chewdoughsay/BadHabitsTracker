@@ -9,7 +9,9 @@ import com.example.badhabitstracker.B_data.network.NetworkProvider
 import com.example.badhabitstracker.B_data.repository.*
 import com.example.badhabitstracker.A_domain.repository.*
 import com.example.badhabitstracker.A_domain.usecase.authentification.*
+import com.example.badhabitstracker.C_presentation.viewmodel.DashboardViewModel
 import com.example.badhabitstracker.C_presentation.viewmodel.LoginViewModel
+import com.example.badhabitstracker.C_presentation.viewmodel.RegisterViewModel
 import com.example.badhabitstracker.C_presentation.viewmodel.SplashViewModel
 
 /**
@@ -69,11 +71,17 @@ class AppContainer(context: Context) {
                 SplashViewModel::class.java -> {
                     SplashViewModel(isUserLoggedInUseCase) as T
                 }
-                // Future ViewModels go here:
-                // LoginViewModel::class.java -> LoginViewModel(loginUserUseCase) as T
-                // DashboardViewModel::class.java -> DashboardViewModel(getHabitsUseCase) as T
+
                 LoginViewModel::class.java -> {
                     LoginViewModel(loginUserUseCase) as T
+                }
+
+                RegisterViewModel::class.java -> {
+                    RegisterViewModel(registerUserUseCase) as T
+                }
+
+                DashboardViewModel::class.java -> {
+                    DashboardViewModel(getCurrentUserUseCase, logoutUserUseCase) as T
                 }
                 else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
@@ -82,14 +90,16 @@ class AppContainer(context: Context) {
 }
 
 /**
- * Application class to hold the container
+ * Custom Application class that holds our dependency container
+ * This ensures single instance of AppContainer throughout app lifecycle
  */
 class BadHabitsApplication : Application() {
     val appContainer by lazy { AppContainer(this) }
 }
 
 /**
- * Extension function to get container from any Context
+ * Extension function to easily access AppContainer from any Context
+ * Usage: requireContext().appContainer.viewModelFactory
  */
 val Context.appContainer: AppContainer
     get() = (applicationContext as BadHabitsApplication).appContainer

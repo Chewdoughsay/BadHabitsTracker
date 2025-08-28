@@ -1,5 +1,10 @@
 <resources>
+    <!-- App Info -->
     <string name="app_name">BadHabits Tracker</string>
+    <string name="loading">Loading...</string>
+    <string name="v1_0_0">v1.0.0</string>
+
+    <!-- Login Screen -->
     <string name="welcome_back">Welcome Back!</string>
     <string name="ready_to_break_some_bad_habits">Ready to break some bad habits?</string>
     <string name="email">Email</string>
@@ -7,6 +12,26 @@
     <string name="log_in">Log In</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign Up</string>
-    <string name="loading">Loading...</string>
-    <string name="v1_0_0">v1.0.0</string>
+
+    <!-- Register Screen -->
+    <string name="create_your_account">Create Your Account</string>
+    <string name="join_us_in_breaking_bad_habits">Join us in breaking bad habits!</string>
+    <string name="full_name">Full Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account">Already have an account?</string>
+
+    <!-- Common Form Elements -->
+    <string name="required_field">This field is required</string>
+    <string name="invalid_email">Please enter a valid email address</string>
+    <string name="password_too_short">Password must be at least 6 characters</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+
+    <!-- Error Messages -->
+    <string name="registration_failed">Registration failed. Please try again.</string>
+    <string name="login_failed">Invalid email or password</string>
+    <string name="network_error">Network error. Please check your connection.</string>
+    <string name="welcome_to_dashboard">Welcome to Dashboard!</string>
+    <string name="logout">Logout</string>
+
 </resources>

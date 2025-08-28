@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.badhabitstracker.A_domain.usecase.authentification.LoginUserUseCase
 import com.example.badhabitstracker.A_domain.usecase.authentification.LoginParams
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
@@ -52,6 +53,8 @@ class LoginViewModel(
         _errorMessage.value = null
 
         viewModelScope.launch {
+            delay(3000)
+
             val result = loginUserUseCase(LoginParams(email, password))
             _isLoading.value = false
 

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary"
+    android:padding="24dp"
+    tools:context=".C_presentation.ui.dashboard.DashboardFragment">
+
+    <!-- Welcome Message -->
+    <!-- Dynamic welcome text with user's name from ViewModel -->
+    <TextView
+        android:id="@+id/tvDashboardWelcome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Welcome to BadHabits Tracker! 👋"
+        android:textColor="@color/text_primary"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Success Message -->
+    <!-- Confirms successful authentication -->
+    <TextView
+        android:id="@+id/tvSuccessMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="🎉 You have successfully logged in!\n\nFull dashboard with habit tracking, statistics, and achievements coming soon..."
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDashboardWelcome" />
+
+    <!-- Placeholder Feature List -->
+    <!-- Shows what's coming in future versions -->
+    <TextView
+        android:id="@+id/tvFeatureList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="📋 Upcoming Features:\n\n• Track your bad habits\n• View progress statistics\n• Unlock achievements\n• Get motivational quotes\n• Set daily reminders"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        android:gravity="start"
+        android:lineSpacingMultiplier="1.4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSuccessMessage" />
+
+    <!-- Error Text -->
+    <!-- Shows logout errors (rare, but good UX) -->
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/error_red"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
+        tools:text="Logout failed"
+        tools:visibility="visible" />
+
+    <!-- Logout Button -->
+    <!-- Primary action button to test authentication flow -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogout"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="60dp"
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:background="@drawable/btn_logout_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Loading Spinner for Logout -->
+    <!-- Shows during logout process -->
+    <ProgressBar
+        android:id="@+id/progressBarLogout"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:indeterminateTint="@color/accent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/btnLogout"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogout"
+        app:layout_constraintStart_toStartOf="@+id/btnLogout"
+        app:layout_constraintTop_toTopOf="@+id/btnLogout" />
+
+    <!-- Future dashboard elements will go here: -->
+    <!-- - Active habits RecyclerView -->
+    <!-- - Statistics cards -->
+    <!-- - Recent achievements list -->
+    <!-- - Daily motivational quote -->
+    <!-- - Floating action button for adding habits -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

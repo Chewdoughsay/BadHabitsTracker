@@ -57,8 +57,15 @@
         <action
             android:id="@+id/action_register_to_dashboard"
             app:destination="@id/dashboardFragment"
-            app:popUpTo="@id/nav_graph"
+            app:popUpTo="@id/registerFragment"
             app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
 
     <!-- Dashboard Fragment -->
@@ -66,6 +73,15 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.badhabitstracker.C_presentation.ui.dashboard.DashboardFragment"
         android:label="Dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard">
+
+        <!-- Navigate back to login after logout -->
+        <!-- This clears the back stack so user can't return to dashboard -->
+        <action
+            android:id="@+id/action_dashboard_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

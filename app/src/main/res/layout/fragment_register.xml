@@ -11,15 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        tools:context=".presentation.ui.auth.LoginFragment">
+        tools:context=".C_presentation.ui.auth.RegisterFragment">
 
         <!-- Welcome Text -->
         <TextView
             android:id="@+id/tvWelcome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="@string/welcome_back"
+            android:layout_marginTop="40dp"
+            android:text="@string/create_your_account"
             android:textColor="@color/text_primary"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/ready_to_break_some_bad_habits"
+            android:text="@string/join_us_in_breaking_bad_habits"
             android:textColor="@color/text_secondary"
             android:textSize="16sp"
             android:fontFamily="sans-serif-light"
@@ -43,13 +43,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
 
-        <!-- Email Field -->
+        <!-- Name Field -->
+        <!-- First field in the registration form - user's display name -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilEmail"
+            android:id="@+id/tilName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:hint="@string/email"
+            android:layout_marginTop="40dp"
+            android:hint="Full Name"
             app:boxBackgroundColor="@color/background_secondary"
             app:boxCornerRadiusBottomEnd="12dp"
             app:boxCornerRadiusBottomStart="12dp"
@@ -62,6 +63,35 @@
             app:layout_constraintTop_toBottomOf="@+id/tvSubtitle">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Email Field -->
+        <!-- Standard email input with email keyboard type for better UX -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/email"
+            app:boxBackgroundColor="@color/background_secondary"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeColor="@color/accent"
+            app:hintTextColor="@color/text_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilName">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,6 +102,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Password Field -->
+        <!-- Password input with toggle visibility for better UX -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilPassword"
             android:layout_width="0dp"
@@ -100,7 +131,38 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Confirm Password Field -->
+        <!-- Second password field for validation - ensures user typed password correctly -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilConfirmPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/confirm_password"
+            app:boxBackgroundColor="@color/background_secondary"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeColor="@color/accent"
+            app:hintTextColor="@color/text_secondary"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilPassword">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <!-- Error Text -->
+        <!-- Dynamic error display for validation messages and registration failures -->
         <TextView
             android:id="@+id/tvError"
             android:layout_width="0dp"
@@ -112,54 +174,57 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilPassword"
-            tools:text="Invalid email or password"
+            app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword"
+            tools:text="Passwords do not match"
             tools:visibility="visible" />
 
-        <!-- Login Button -->
+        <!-- Register Button -->
+        <!-- Main CTA button with gradient background and disabled state -->
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnRegister"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/log_in"
+            android:layout_marginTop="24dp"
+            android:text="@string/create_account"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium"
-            android:background="@drawable/btn_login_selector"
+            android:background="@drawable/btn_register_selector"
             android:enabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvError" />
 
         <!-- Loading Spinner -->
+        <!-- Centered spinner that appears during registration process -->
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:indeterminateTint="@color/accent"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/btnLogin"
-            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-            app:layout_constraintStart_toStartOf="@+id/btnLogin"
-            app:layout_constraintTop_toTopOf="@+id/btnLogin" />
+            app:layout_constraintBottom_toBottomOf="@+id/btnRegister"
+            app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+            app:layout_constraintStart_toStartOf="@+id/btnRegister"
+            app:layout_constraintTop_toTopOf="@+id/btnRegister" />
 
-        <!-- Register Section -->
+        <!-- Login Section -->
+        <!-- Links back to login screen for existing users -->
         <TextView
-            android:id="@+id/tvRegisterPrompt"
+            android:id="@+id/tvLoginPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="@string/don_t_have_an_account"
+            android:layout_marginTop="32dp"
+            android:text="@string/already_have_an_account"
             android:textColor="@color/text_secondary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
         <TextView
-            android:id="@+id/tvRegister"
+            android:id="@+id/tvLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -168,14 +233,14 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="12dp"
-            android:text="@string/sign_up"
+            android:text="@string/log_in"
             android:textColor="@color/accent"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvRegisterPrompt" />
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginPrompt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
