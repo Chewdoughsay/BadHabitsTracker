@@ -33,5 +33,9 @@
     <string name="network_error">Network error. Please check your connection.</string>
     <string name="welcome_to_dashboard">Welcome to Dashboard!</string>
     <string name="logout">Logout</string>
+    <string name="quit_smoking">Quit Smoking</string>
+    <string name="day_15">Day 15</string>
+    <string name="_50_to_goal">50% to goal</string>
+    <string name="_75_saved">$75 saved</string>
 
 </resources>

@@ -9,6 +9,7 @@ import com.example.badhabitstracker.B_data.network.NetworkProvider
 import com.example.badhabitstracker.B_data.repository.*
 import com.example.badhabitstracker.A_domain.repository.*
 import com.example.badhabitstracker.A_domain.usecase.authentification.*
+import com.example.badhabitstracker.A_domain.usecase.*
 import com.example.badhabitstracker.C_presentation.viewmodel.DashboardViewModel
 import com.example.badhabitstracker.C_presentation.viewmodel.LoginViewModel
 import com.example.badhabitstracker.C_presentation.viewmodel.RegisterViewModel
@@ -59,6 +60,42 @@ class AppContainer(context: Context) {
     val logoutUserUseCase = LogoutUserUseCase(userRepository)
     val getCurrentUserUseCase = GetCurrentUserUseCase(userRepository)
 
+    // Dashboard Use Cases
+    val getDashboardStatisticsUseCase = GetDashboardStatisticsUseCase(
+        habitRepository, achievementRepository, userRepository
+    )
+    val getUserDashboardUseCase = GetUserDashboardUseCase(
+        userRepository, habitRepository, achievementRepository
+    )
+
+    // Habit Management Use Cases
+    val getHabitsUseCase = GetHabitsUseCase(habitRepository, userRepository)
+    val addHabitUseCase = AddHabitUseCase(habitRepository, achievementRepository, userRepository)
+    val logDailyProgressUseCase = LogDailyProgressUseCase(
+        habitRepository, achievementRepository, userRepository
+    )
+    val getHabitStatisticsUseCase = GetHabitStatisticsUseCase(habitRepository, userRepository)
+
+    // Achievement Use Cases
+    val getAllAchievementsUseCase = GetAllAchievementsUseCase(achievementRepository, userRepository)
+    val getRecentAchievementsUseCase = GetRecentAchievementsUseCase(achievementRepository, userRepository)
+    val getUnviewedAchievementsCountUseCase = GetUnviewedAchievementsCountUseCase(
+        achievementRepository, userRepository
+    )
+
+    // HTTP Request Use Cases (Requirements: min 2 HTTP requests)
+    val getDailyQuoteUseCase = GetDailyQuoteUseCase(quoteRepository)
+    val getDailyHealthTipUseCase = GetDailyHealthTipUseCase(quoteRepository)
+    val getRandomQuoteUseCase = GetRandomQuoteUseCase(quoteRepository)
+
+    // Settings Use Cases (SharedPreferences requirement)
+    val getUserSettingsUseCase = GetUserSettingsUseCase(sharedPrefsRepository, userRepository)
+    val updateUserSettingsUseCase = UpdateUserSettingsUseCase(sharedPrefsRepository, userRepository)
+    val updateDarkModeUseCase = UpdateDarkModeUseCase(sharedPrefsRepository, userRepository)
+    val updateNotificationSettingsUseCase = UpdateNotificationSettingsUseCase(
+        sharedPrefsRepository, userRepository
+    )
+
     // ============ VIEWMODEL FACTORY ============
 
     /**
@@ -81,8 +118,28 @@ class AppContainer(context: Context) {
                 }
 
                 DashboardViewModel::class.java -> {
-                    DashboardViewModel(getCurrentUserUseCase, logoutUserUseCase) as T
+                    DashboardViewModel(
+                        // Authentication
+                        getCurrentUserUseCase = getCurrentUserUseCase,
+                        logoutUserUseCase = logoutUserUseCase,
+
+                        // Dashboard Data
+                        getDashboardStatisticsUseCase = getDashboardStatisticsUseCase,
+                        getHabitsUseCase = getHabitsUseCase,
+                        getRecentAchievementsUseCase = getRecentAchievementsUseCase,
+
+                        // HTTP Requests (Requirements)
+                        getDailyQuoteUseCase = getDailyQuoteUseCase,
+                        getDailyHealthTipUseCase = getDailyHealthTipUseCase,
+
+                        // Settings (SharedPreferences requirement)
+                        getUserSettingsUseCase = getUserSettingsUseCase,
+
+                        // Habit Actions
+                        logDailyProgressUseCase = logDailyProgressUseCase
+                    ) as T
                 }
+
                 else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
         }
