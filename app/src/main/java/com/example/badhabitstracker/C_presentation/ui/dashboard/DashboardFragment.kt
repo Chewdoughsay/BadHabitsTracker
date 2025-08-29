@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.badhabitstracker.C_presentation.adapter.HabitsAdapter
 import com.example.badhabitstracker.C_presentation.viewmodel.DashboardViewModel
 import com.example.badhabitstracker.R
 import com.example.badhabitstracker.D_data_injection.appContainer
@@ -103,9 +104,19 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
+        val habitsAdapter = HabitsAdapter(
+            onHabitClick = { habit ->
+                // TODO: Navigate to habit detail
+                Toast.makeText(requireContext(), "Clicked: ${habit.name}", Toast.LENGTH_SHORT)
+                    .show()
+            },
+            onCheckInClick = { habitId, wasSuccessful ->
+                onHabitCheckIn(habitId, wasSuccessful)
+            }
+        )
+
         rvActiveHabits.layoutManager = LinearLayoutManager(requireContext())
-        // TODO: Set up HabitsAdapter when created
-        // rvActiveHabits.adapter = habitsAdapter
+        rvActiveHabits.adapter = habitsAdapter
     }
 
     private fun setupClickListeners() {
@@ -166,13 +177,7 @@ class DashboardFragment : Fragment() {
         // ============ ACTIVE HABITS (RECYCLERVIEW) ============
 
         viewModel.activeHabits.observe(viewLifecycleOwner) { habits ->
-            // TODO: Update RecyclerView adapter with habits
-            // habitsAdapter.updateHabits(habits)
-
-            // For now, show habit count
-            if (habits.isNotEmpty()) {
-                Toast.makeText(requireContext(), "Loaded ${habits.size} active habits", Toast.LENGTH_SHORT).show()
-            }
+            (rvActiveHabits.adapter as? HabitsAdapter)?.updateHabits(habits)
         }
 
         viewModel.showEmptyHabitsState.observe(viewLifecycleOwner) { showEmpty ->

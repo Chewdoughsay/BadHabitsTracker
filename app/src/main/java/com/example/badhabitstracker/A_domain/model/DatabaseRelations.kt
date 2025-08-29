@@ -1,7 +1,7 @@
 package com.example.badhabitstracker.A_domain.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * user cu toate habiturile lui (pt profil)
